@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget buildAssetImage(String url) {
     return FadeImage.asset(
       url,
-      duration: 350,
+      duration: 3500,
       imageWidth: 300,
       imageHeight: 300,
     );
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget buildNetImage(String url) {
     return FadeImage.network(
       url,
-      duration: 350,
+      duration: 3500,
       imageWidth: 300,
       imageHeight: 300,
     );
