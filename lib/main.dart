@@ -1,6 +1,7 @@
 import 'package:fade_image/widget/fade_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'data.dart';
 
 void main() {
@@ -30,13 +31,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   late ScrollController _controller;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = ScrollController(initialScrollOffset: 0.0);
   }
@@ -53,10 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: GridView.builder(
-          gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.0
-          ),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, childAspectRatio: 1.0),
           controller: _controller,
           itemCount: list.length,
           itemBuilder: (context, index) => buildItem(index)),
@@ -68,12 +64,25 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: const EdgeInsets.all(8.0),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(12.0),
-          child: FadeImage(
-            list[index],
-            duration: 300,
-            imageWidth: 300,
-            imageHeight: 300,
-          )),
+          child: buildNetImage(list[index])),
+    );
+  }
+
+  Widget buildAssetImage(String url) {
+    return FadeImage.asset(
+      url,
+      duration: 350,
+      imageWidth: 300,
+      imageHeight: 300,
+    );
+  }
+
+  Widget buildNetImage(String url) {
+    return FadeImage.network(
+      url,
+      duration: 350,
+      imageWidth: 300,
+      imageHeight: 300,
     );
   }
 }
